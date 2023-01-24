@@ -1,0 +1,7 @@
+{
+  "name": "AppMultihexa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
