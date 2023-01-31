@@ -1,8 +1,26 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { 
+  IonApp, 
+  IonHeader, 
+  IonIcon, 
+  IonLabel, 
+  IonMenu, 
+  IonRouterOutlet, 
+  setupIonicReact, 
+  IonToolbar, 
+  IonTitle, 
+  IonList, 
+  IonItem, 
+  IonContent, 
+  IonMenuToggle 
+} from '@ionic/react';
 
+import { IonReactRouter } from '@ionic/react-router';
+
+import Filtres from './pages/Filtres';
+import CoursTabs from './pages/CoursTabs';
+
+import {list, options} from 'ionicons/icons';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -21,19 +39,44 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/theme.css';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
+      <IonMenu contentId="main">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Cours Objectifs</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonList>
+            <IonMenuToggle>
+                <IonItem button routerLink="/cours/tous-objectifs" routerDirection="none">           
+                  <IonIcon slot="start" icon={list} />
+                  <IonLabel>Tous les objectifs</IonLabel>
+                </IonItem>
+              </IonMenuToggle>
+              <IonMenuToggle>
+                <IonItem button routerLink="/filtres" routerDirection="none">           
+                  <IonIcon slot="start" icon={options} />
+                  <IonLabel>Filtres</IonLabel>
+                </IonItem>
+              </IonMenuToggle>
+          </IonList>
+        </IonContent>
+      </IonMenu>
+      <IonRouterOutlet id="main">
+        <Route path="/filtres" exact>
+          <Filtres />
         </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
+        <Route path="/cours">
+          <CoursTabs />
         </Route>
+        <Redirect path="/" to="/cours/liste" exact/>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
