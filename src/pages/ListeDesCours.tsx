@@ -50,8 +50,6 @@ const ListeDesCours: React.FC = () => {
             </IonToolbar>
         </IonHeader>
         <IonContent>
-            {/*<h2>ça fonctionne la page Listes des cours</h2>
-            <div><IonButton routerLink='/cours-objectifs'>Cours objectifs</IonButton></div>*/}
             <IonGrid>
                 {COURS_DATA.map((cours) => (
                     <IonRow key={cours.id}>
