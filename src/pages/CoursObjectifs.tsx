@@ -44,7 +44,7 @@ const CoursObjectifs: React.FC = () => {
             return;
         }
         setDebuterModifier(true);
-        //console.log("Débuter modifier l'objectif");
+        console.log("Débuter modifier l'objectif");
         setObjectifSelectionne(objectif);
     };
 
